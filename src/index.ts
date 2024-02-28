@@ -49,9 +49,9 @@ class S3React {
             uploadResult()
         })
     }
-    static delete(fileName: string, config: IConfig) {
+    static delete(config: IConfig) {
         const fd = new FormData();
-        const url = `https://${config.bucketName}.s3.amazonaws.com/${config.albumName ? config.albumName + '/' : ''}${fileName}`
+        const url = `https://${config.bucketName}.s3.amazonaws.com/${config.albumName ? config.albumName + '/' : ''}${config.fileName}`
         fd.append('Date', xAmzDate)
         fd.append('X-Amz-Date', xAmzDate);
         fd.append('Authorization', Signature.getSignature(config, dateYMD, Policy.getPolicy(config)));
@@ -76,7 +76,7 @@ class S3React {
                     ok: result.ok,
                     status: result.status,
                     message: 'File Deleted',
-                    fileName: fileName
+                    fileName: config.fileName
                 })
             }
             deleteResult()
