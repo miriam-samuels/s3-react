@@ -124,7 +124,7 @@ Defaults your bucket to `public-read` : http://docs.aws.amazon.com/AmazonS3/late
 1. `config`
   * `bucketName` **required** - Your S3 bucket
   * `albumName` **required** - Your S3 folderName/albumName
-  * `fileNName` **optional** - Your S3 folderName/albumName/fileName
+  * `fileName` **optional** - Your S3 folderName/albumName/fileName
   * `region` **required** - Your S3 bucket's region
   * `accessKeyId` **required** - Your S3 `AccessKeyId`
   * `secretAccessKey` **required** - Your S3 `SecretAccessKey`
