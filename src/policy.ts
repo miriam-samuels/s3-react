@@ -10,7 +10,7 @@ export default class Policy {
                     { "bucket": keys.bucketName },
                     ["starts-with", "$key", `${keys.albumName ? keys.albumName + '/' : ''}`],
                     { "acl": "public-read" },
-                    ["starts-with", "$Content-Type", "image/"],
+                    ["starts-with", "$Content-Type", ""],
                     { "x-amz-meta-uuid": "14365123651274" },
                     { "x-amz-server-side-encryption": "AES256" },
                     ["starts-with", "$x-amz-meta-tag", ""],
@@ -20,7 +20,7 @@ export default class Policy {
                 ]
             })
         }
-        const policyBase64 = Buffer.from(JSON.stringify(policy(config, dateISOString))).toString('base64').replace(/\n|\r/, '');
+        const policyBase64 = btoa(JSON.stringify(policy(config, dateISOString))).replace(/\n|\r/, '');
         return policyBase64
     }
 }
